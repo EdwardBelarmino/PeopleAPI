@@ -22,24 +22,31 @@ namespace PeopleAPI.Controllers.API
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        public Person Get(int id)
         {
-            return "value";
+            var person = _context.People.Where(a => a.Id == id).SingleOrDefault();
+            return person;
         }
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Person personToAdd)
         {
+            _context.People.Add(personToAdd);
+            _context.SaveChanges();
+
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Person person)
         {
         }
 
         // DELETE api/<controller>/5
         public void Delete(int id)
         {
+            var person = _context.People.Where(a => a.Id == id).SingleOrDefault();
+            _context.People.Remove(person);
+            _context.SaveChanges();
         }
     }
 }

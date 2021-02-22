@@ -5,7 +5,7 @@ using System.Web.Http;
 
 namespace PeopleAPI
 {
-    public static class WebApiConfig
+    public static class WebAPIConfig
     {
         public static void Register(HttpConfiguration config)
         {
